@@ -1,14 +1,22 @@
 const myPassword = 'Ladoga1$';
 
 function crypto(password) {
-    const a = password.slice(0, 3);
-    return password + a;
+    const arr = password.split('');
+    let [a, b] = arr;
+    arr[0] = b;
+    arr[1] = a;
+    return arr.join('');
 
 }
 
-function check(psw, myPassword) {
-    psw = psw.slice(0, -3);
-    return psw == myPassword;
+
+
+function check(psw, insertPassword) {
+    const arr = psw.split('');
+    let [a, b] = arr;
+    arr[1] = a;
+    arr[0] = b;
+    return arr.join('') == insertPassword;
 }
 
 encryptedPassword = crypto(myPassword);
