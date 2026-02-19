@@ -2,7 +2,7 @@ function filterArray(arr, fn){
     let new_arr = [];
 
     for (let el of arr){
-        if (fn(el)) {
+        if (!fn(el)) {
             new_arr.push(el);
         }
     }
