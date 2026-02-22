@@ -8,8 +8,28 @@ function arrayDates(array) {
         (elem.includes("-") || elem.includes("/") || elem.includes(".")),
     )
     .map((elem) => {
-      [day, month, year] = [elem.slice(0, 2), elem.slice(3, 5), elem.slice(6)];
-      if (Number(day) <= 31 && Number(month) <= 12) {
+      if (elem.includes("-")) {
+        [day, month, year] = [
+          elem.slice(0, 2),
+          elem.slice(3, 5),
+          elem.slice(6),
+        ];
+        console.log(day, month, year);
+      } else if (elem.includes("/")) {
+        [month, day, year] = [
+          elem.slice(0, 2),
+          elem.slice(3, 5),
+          elem.slice(6),
+        ];
+        console.log(day, month, year);
+      }
+
+      if (
+        1 <= Number(day) &&
+        Number(day) <= 31 &&
+        1 <= Number(month) &&
+        Number(month) <= 12
+      ) {
         return `${day}-${month}-${year}`;
       } else {
         return null;
