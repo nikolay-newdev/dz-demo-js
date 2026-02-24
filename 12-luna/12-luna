@@ -12,7 +12,7 @@ function correctCardNumber(cardNumber) {
     })
     .reduce((acc, elem) => (acc += elem), 0);
 
-  return res % 2 === 0;
+  return res % 10 === 0;
 }
 
 console.log(correctCardNumber(card));
