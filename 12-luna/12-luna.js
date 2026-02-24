@@ -7,8 +7,8 @@ function correctCardNumber(cardNumber) {
     .reverse()
     .map((el, ix) => {
       let num = Number(el);
-      ix % 2 !== 0 ? num * 2 : num;
-      num > 9 ? (num -= 9) : num;
+      num = ix % 2 !== 0 ? num * 2 : num;
+      num = num > 9 ? (num -= 9) : num;
       return num;
     })
     .reduce((acc, elem) => (acc += elem), 0);
