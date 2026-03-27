@@ -1,0 +1,43 @@
+const array = ["10-02-2022", "тест", "11/12/2023", "00/13/2022", "41/12/2023"];
+
+function arrayDates(array) {
+  let new_arr = array
+    .filter(
+      (elem) =>
+        elem.length === 10 &&
+        (elem.includes("-") || elem.includes("/") || elem.includes(".")),
+    )
+    .map((elem) => {
+      if (elem.includes("-")) {
+        [day, month, year] = [
+          elem.slice(0, 2),
+          elem.slice(3, 5),
+          elem.slice(6),
+        ];
+        console.log(day, month, year);
+      } else if (elem.includes("/")) {
+        [month, day, year] = [
+          elem.slice(0, 2),
+          elem.slice(3, 5),
+          elem.slice(6),
+        ];
+        console.log(day, month, year);
+      }
+
+      if (
+        1 <= Number(day) &&
+        Number(day) <= 31 &&
+        1 <= Number(month) &&
+        Number(month) <= 12
+      ) {
+        return `${day}-${month}-${year}`;
+      } else {
+        return null;
+      }
+    })
+    .filter((elem) => elem != null);
+
+  return new_arr;
+}
+
+console.log(arrayDates(array));
