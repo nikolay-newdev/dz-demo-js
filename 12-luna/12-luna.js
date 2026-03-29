@@ -1,0 +1,19 @@
+const card = "4561-2612-1234-5464";
+
+function correctCardNumber(cardNumber) {
+  let res = cardNumber
+    .replaceAll("-", "")
+    .split("")
+    .reverse()
+    .map((el, ix) => {
+      let num = Number(el);
+      num = ix % 2 !== 0 ? num * 2 : num;
+      num = num > 9 ? (num -= 9) : num;
+      return num;
+    })
+    .reduce((acc, elem) => (acc += elem), 0);
+
+  return res % 10 === 0;
+}
+
+console.log(correctCardNumber(card));
